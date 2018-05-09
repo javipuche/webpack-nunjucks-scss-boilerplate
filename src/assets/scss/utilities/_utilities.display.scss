@@ -1,0 +1,57 @@
+/* -----------------------------------------------------------------------------
+ * DISPLAY
+ */
+
+
+// Variables
+// -----------------------------------------------------------------------------
+
+// Toggling
+
+$u-display-enabled: true !default;
+
+// Clases
+
+$u-display-classes: (
+  "none": (display: none),
+  "block": (display: block),
+  "inline-block": (display: inline-block),
+) !default;
+
+// Breakpoints
+
+$u-display-breakpoints-enabled: true !default;
+$u-display-breakpoints: $f-mq-breakpoints !default;
+
+
+// Mixin
+// -----------------------------------------------------------------------------
+
+@mixin u-display($_bp-separator: null, $_bp-name: null) {
+  @each $_properties, $_values in $u-display-classes {
+    .u-display#{if($_properties, "-", "")}#{$_properties}#{$_bp-separator}#{$_bp-name} {
+      @each $_property, $_value in $_values {
+        #{$_property}: $_value !important;
+      }
+    }
+  }
+}
+
+
+// Output
+// -----------------------------------------------------------------------------
+
+@if $u-display-enabled {
+  @include u-display;
+}
+
+
+// Breakpoints output
+// -----------------------------------------------------------------------------
+@if $u-display-enabled and $u-display-breakpoints-enabled {
+  @each $_bp-name, $_bp-value in $u-display-breakpoints {
+    @include breakpoint($_bp-value) {
+      @include u-display($s-config-breakpoint-separator, $_bp-name);
+    }
+  }
+}

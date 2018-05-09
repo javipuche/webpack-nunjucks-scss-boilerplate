@@ -1,0 +1,86 @@
+/* -----------------------------------------------------------------------------
+ * WRAPPERS
+ */
+
+
+// Variables
+// -----------------------------------------------------------------------------
+
+// Toggling
+
+$o-wrappers-enabled: true !default;
+
+// Map
+
+$o-wrappers: $f-wrappers !default;
+
+// Modifiers
+
+$o-wrappers-modifiers-enabled: true !default;
+
+// Breakpoints
+
+$o-wrappers-breakpoints-enabled: true !default;
+$o-wrappers-modifiers-breakpoints-enabled: true !default;
+$o-wrappers-breakpoints: $f-mq-breakpoints !default;
+
+
+// Mixins
+// -----------------------------------------------------------------------------
+
+@mixin o-wrapper {
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+
+
+// Output
+// -----------------------------------------------------------------------------
+
+@if $o-wrappers-enabled {
+  .o-wrapper {
+    @include o-wrapper;
+
+    @if $o-wrappers-modifiers-enabled {
+      @each $_class-name, $_max-wrapper in $o-wrappers {
+        &--#{$_class-name} {
+          max-width: $_max-wrapper;
+        }
+      }
+    }
+  }
+}
+
+
+// Breakpoints output
+// -----------------------------------------------------------------------------
+
+@if $o-wrappers-enabled and $o-wrappers-breakpoints-enabled {
+
+  // Object
+
+  @if $o-wrappers-modifiers-enabled {
+    @each $_bp-name, $_bp-value in $o-wrappers-breakpoints {
+      .o-wrapper#{$s-config-breakpoint-separator}#{$_bp-name} {
+        @include breakpoint($_bp-value) {
+          @include o-wrapper;
+        }
+      }
+    }
+  }
+
+  // Sizes
+
+  @if $o-wrappers-modifiers-breakpoints-enabled {
+    @each $_class-name, $_max-wrapper in $o-wrappers {
+      @each $_bp-name, $_bp-value in $o-wrappers-breakpoints {
+        .o-wrapper--#{$_class-name}#{$s-config-breakpoint-separator}#{$_bp-name} {
+          @include breakpoint($_bp-value) {
+            max-width: $_max-wrapper;
+          }
+        }
+      }
+    }
+  }
+}

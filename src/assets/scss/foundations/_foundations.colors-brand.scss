@@ -1,0 +1,23 @@
+/* -----------------------------------------------------------------------------
+ * COLORS BRAND
+ */
+
+
+// Main colors
+
+$f-color-brand-primary: #91bce7;
+$f-color-brand-secondary: #91e4e7;
+
+// Primary shades
+
+$f-color-brand-primary-light: lighten($f-color-brand-primary, 10%);
+$f-color-brand-primary-dark: darken($f-color-brand-primary, 10%);
+
+// Map
+
+$f-colors-brand: (
+  "primary": $f-color-brand-primary,
+  "primary-light": $f-color-brand-primary-light,
+  "primary-dark": $f-color-brand-primary-dark,
+  "secondary": $f-color-brand-secondary
+) !default;

@@ -1,0 +1,68 @@
+/* -----------------------------------------------------------------------------
+ * WIDTHS
+ */
+
+// Variables
+// -----------------------------------------------------------------------------
+
+// Toggling
+
+$u-widths-enabled: true !default;
+
+// Fractions
+
+$u-widths-fractions: 1 2 3 4 5 !default;
+
+// Breakpoints
+
+$u-widths-breakpoints-enabled: true !default;
+$u-widths-breakpoints: $f-mq-breakpoints !default;
+
+// Pull and push
+
+$u-widths-offset-push-enabled: true !default;
+$u-widths-offset-pull-enabled: true !default;
+
+
+// Mixin
+// -----------------------------------------------------------------------------
+
+@mixin u-widths($_columns, $_breakpoint: null) {
+
+  @each $_denominator in $_columns {
+
+    @for $_numerator from 1 through $_denominator {
+      .u-#{$_numerator}\/#{$_denominator}#{$_breakpoint} {
+        width: ($_numerator / $_denominator) * 100% !important;
+      }
+
+      @if $u-widths-enabled and $u-widths-offset-push-enabled {
+        .u-push-#{$_numerator}\/#{$_denominator}#{$_breakpoint} {
+          margin-left: ($_numerator / $_denominator) * 100% !important;
+        }
+      }
+
+      @if $u-widths-enabled and $u-widths-offset-pull-enabled {
+        .u-pull-#{$_numerator}\/#{$_denominator}#{$_breakpoint} {
+          margin-right: ($_numerator / $_denominator) * 100% !important;
+        }
+      }
+    }
+  }
+}
+
+
+// Output
+// -----------------------------------------------------------------------------
+
+@include u-widths($u-widths-fractions);
+
+
+// Breakpoints output
+// -----------------------------------------------------------------------------
+
+@each $_bp-name, $_bp-value in $u-widths-breakpoints {
+  @include breakpoint($_bp-value) {
+    @include u-widths($u-widths-fractions, #{$s-config-breakpoint-separator}#{$_bp-name});
+  }
+}

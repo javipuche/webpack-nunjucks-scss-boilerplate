@@ -1,0 +1,27 @@
+/* -----------------------------------------------------------------------------
+ * TEXT TRANSFORMS
+ */
+
+
+// Variables
+// -----------------------------------------------------------------------------
+
+// Toggling
+
+$u-text-transform-enabled: true !default;
+
+// Properties
+
+$u-text-transform-values: (lowercase, uppercase, capitalize) !default;
+
+
+// Output
+// -----------------------------------------------------------------------------
+
+@if $u-text-transform-enabled {
+  @each $_text-transforms in $u-text-transform-values {
+    .u-#{$_text-transforms} {
+      text-transform: $_text-transforms !important;
+    }
+  }
+}

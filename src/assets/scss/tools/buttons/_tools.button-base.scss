@@ -1,0 +1,17 @@
+/* -----------------------------------------------------------------------------
+ * BUTTON BASE
+ */
+
+
+@mixin button-base($padding: null) {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+
+  @if $padding {
+    padding: $padding;
+  }
+}

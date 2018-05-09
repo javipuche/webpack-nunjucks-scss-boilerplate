@@ -1,0 +1,48 @@
+/* -----------------------------------------------------------------------------
+ * ALIGNMENTS
+ */
+
+
+// Variables
+// -----------------------------------------------------------------------------
+
+// Toggling
+
+$u-align-enabled: true !default;
+
+// Properties
+
+$u-align-alignments: (left, center, right) !default;
+
+// Breakpoints
+
+$u-align-breakpoints-enabled: true !default;
+$u-align-breakpoints: $f-mq-breakpoints !default;
+
+
+// Output
+// -----------------------------------------------------------------------------
+
+@if $u-align-enabled {
+  @each $_alignment in $u-align-alignments {
+    .u-align-#{$_alignment} {
+      text-align: $_alignment !important;
+    }
+  }
+}
+
+
+// Breakpoints output
+// -----------------------------------------------------------------------------
+
+@if $u-align-enabled and $u-align-breakpoints-enabled {
+  @each $_bp-name, $_bp-value in $u-align-breakpoints {
+    @each $_alignment in $u-align-alignments {
+      .u-align-#{$_alignment}#{$s-config-breakpoint-separator}#{$_bp-name} {
+        @include breakpoint($_bp-value) {
+          text-align: $_alignment !important;
+        }
+      }
+    }
+  }
+}

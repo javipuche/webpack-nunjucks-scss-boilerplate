@@ -1,0 +1,134 @@
+/* -----------------------------------------------------------------------------
+ * LAYOUT
+ */
+
+
+// Variables
+// -----------------------------------------------------------------------------
+
+// Toggling
+
+$o-layout-enabled: true !default;
+
+// Gutters
+
+$o-layout-gutters-enabled: true !default;
+$o-layout-gutters: $f-spaces;
+
+// Classes
+
+$o-layout-classes: (
+  "gutter-bottom": (
+    "selector": (
+      "margin-bottom"
+    ),
+    "item": (
+      "padding-bottom"
+    )
+  ),
+  "gutter-left": (
+    "selector": (
+      "margin-left"
+    ),
+    "item": (
+      "padding-left"
+    )
+  ),
+  "gutter": (
+    "selector": (
+      "margin-bottom",
+      "margin-left"
+    ),
+    "item": (
+      "padding-bottom",
+      "padding-left"
+    )
+  )
+) !default;
+
+// Breakpoints
+
+$o-layout-breakpoints-enabled: true !default;
+$o-layout-gutters-breakpoints-enabled: true !default;
+$o-layout-breakpoints: $f-mq-breakpoints !default;
+
+
+// Mixins
+// -----------------------------------------------------------------------------
+
+@mixin o-layout {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin o-layout-item {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@mixin o-layout-gutter($_bp-separator: null, $_bp-name: null) {
+  @each $_space-name, $_space-value in $o-layout-gutters {
+    @each $_class-name, $_class-items in $o-layout-classes {
+      @each $_class-type, $_class-properties in $_class-items {
+        @if $_class-type == 'selector' {
+          .o-layout--#{$_class-name}-#{$_space-name}#{$_bp-separator}#{$_bp-name} {
+            @each $_property-name in $_class-properties {
+              #{$_property-name}: -1 * $_space-value;
+            }
+          }
+        }
+        @if $_class-type == 'item' {
+          .o-layout--#{$_class-name}-#{$_space-name}#{$_bp-separator}#{$_bp-name} > .o-layout__item {
+            @each $_property-name in $_class-properties {
+              #{$_property-name}: $_space-value;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// Output
+// -----------------------------------------------------------------------------
+
+@if $o-layout-enabled {
+  .o-layout {
+    @include o-layout;
+  }
+
+  .o-layout__item {
+    @include o-layout-item;
+  }
+}
+
+
+// Breakpoints
+// -----------------------------------------------------------------------------
+
+@if $o-layout-enabled and $o-layout-breakpoints-enabled {
+  @each $_bp-name, $_bp-value in $o-layout-breakpoints {
+    .o-layout#{$s-config-breakpoint-separator}#{$_bp-name} {
+      @include breakpoint($_bp-value) {
+        @include o-layout;
+      }
+    }
+  }
+}
+
+
+// Gutter output
+// -----------------------------------------------------------------------------
+
+@if $o-layout-enabled and $o-layout-gutters-enabled {
+  @include o-layout-gutter;
+}
+
+@if $o-layout-enabled and $o-layout-gutters-enabled and $o-layout-gutters-breakpoints-enabled {
+  @each $_bp-name, $_bp-value in $o-layout-breakpoints {
+    @include breakpoint($_bp-value) {
+      @include o-layout-gutter($s-config-breakpoint-separator, $_bp-name);
+    }
+  }
+}

@@ -1,0 +1,84 @@
+/* -----------------------------------------------------------------------------
+ * PADDING
+ */
+
+
+// Variables
+// -----------------------------------------------------------------------------
+
+// Toggling
+
+$u-padding-enabled: true !default;
+
+// Spaces
+
+$u-padding-spaces: $f-spaces !default;
+$u-padding-classes: (
+  "pdt": (
+    "padding-top"
+  ),
+  "pdr": (
+    "padding-right"
+  ),
+  "pdb": (
+    "padding-bottom"
+  ),
+  "pdl": (
+    "padding-left"
+  ),
+  "pdv": (
+    "padding-top",
+    "padding-bottom"
+  ),
+  "pdh": (
+    "padding-left",
+    "padding-right"
+  ),
+  "pd" : (
+    "padding-top",
+    "padding-right",
+    "padding-bottom",
+    "padding-left"
+  )
+) !default;
+
+// Breakpoints
+
+$u-padding-breakpoints-enabled: true !default;
+$u-padding-breakpoints: $f-mq-breakpoints !default;
+
+
+// Ouput
+// -----------------------------------------------------------------------------
+
+@if $u-padding-enabled {
+  @each $_space-name, $_space-value in $u-padding-spaces {
+    @each $_class-name, $_class-properties in $u-padding-classes {
+      .u-#{$_class-name}-#{$_space-name} {
+        @each $_property-name in $_class-properties {
+          #{$_property-name}: $_space-value !important;
+        }
+      }
+    }
+  }
+}
+
+
+// Breakpoints ouput
+// -----------------------------------------------------------------------------
+
+@if $u-padding-enabled and $u-padding-breakpoints-enabled {
+  @each $_space-name, $_space-value in $u-padding-spaces {
+    @each $_bp-name, $_bp-value in $u-padding-breakpoints {
+      @each $_class-name, $_class-properties in $u-padding-classes {
+        .u-#{$_class-name}-#{$_space-name}#{$s-config-breakpoint-separator}#{$_bp-name} {
+          @include breakpoint($_bp-value) {
+            @each $_property-name in $_class-properties {
+              #{$_property-name}: $_space-value !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}

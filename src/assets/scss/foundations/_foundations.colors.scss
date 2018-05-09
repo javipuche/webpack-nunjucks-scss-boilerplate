@@ -1,0 +1,19 @@
+/* -----------------------------------------------------------------------------
+ * COLORS
+ */
+
+
+// Import colors files
+// -----------------------------------------------------------------------------
+
+@import "foundations.colors-brand";
+@import "foundations.colors-neutral";
+
+
+// Map
+// -----------------------------------------------------------------------------
+
+$f-colors: (
+  "brand": $f-colors-brand,
+  "neutral": $f-colors-neutral,
+) !default;

@@ -1,0 +1,26 @@
+/* -----------------------------------------------------------------------------
+ * WRAPPERS
+ */
+
+
+// Main variables
+
+$f-wrapper-none: 0 !default;
+$f-wrapper-xs: 300px !default;
+$f-wrapper-s: 600px !default;
+$f-wrapper-m: 800px !default;
+$f-wrapper-l: 1200px !default;
+$f-wrapper-xl: 1400px !default;
+$f-wrapper-xxl: 1600px !default;
+
+// Map
+
+$f-wrappers: (
+  "none": $f-wrapper-none,
+  "xs": $f-wrapper-xs,
+  "s": $f-wrapper-s,
+  "m": $f-wrapper-m,
+  "l": $f-wrapper-l,
+  "xl": $f-wrapper-xl,
+  "xxl": $f-wrapper-xxl
+) !default;

@@ -1,0 +1,26 @@
+/* -------------------------------------------------------------------------
+ * RADIUS
+ */
+
+
+// Main radius
+
+$f-radius: 8px !default;
+
+// Radius variants
+
+$f-radius-none: 0 !default;
+$f-radius-s: round($f-radius * .5) !default;
+$f-radius-m: round($f-radius * 1) !default;
+$f-radius-l: round($f-radius * 2) !default;
+$f-radius-circle: 50% !default;
+
+// Radiuses  map
+
+$f-radiuses: (
+  "none": $f-radius-none,
+  "s": $f-radius-s,
+  "m": $f-radius-m,
+  "l": $f-radius-l,
+  "circle": $f-radius-circle,
+) !default;

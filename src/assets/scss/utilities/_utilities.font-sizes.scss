@@ -1,0 +1,27 @@
+/* -----------------------------------------------------------------------------
+ * FONT
+ */
+
+
+// Variables
+// -----------------------------------------------------------------------------
+
+// Toggling
+
+$u-font-enabled: false !default;
+
+// Map
+
+$u-font-sizes: $f-font-sizes !default;
+
+
+// Output
+// -----------------------------------------------------------------------------
+
+@if $u-font-enabled {
+  @each $_font-size-name, $_font-size-value in $u-font-sizes {
+    .u-font-size-#{$_font-size-name} {
+      font-size: $_font-size-value !important;
+    }
+  }
+}

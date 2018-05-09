@@ -1,0 +1,22 @@
+/* -------------------------------------------------------------------------
+ * ASPECT RATIOS
+ */
+
+
+// Ratios
+
+$f-aspect-ratio-1-1: 1 / 1 !default;
+$f-aspect-ratio-2-1: 1 / 2 !default;
+$f-aspect-ratio-3-2: 2 / 3 !default;
+$f-aspect-ratio-4-3: 3 / 4 !default;
+$f-aspect-ratio-16-9: 9 / 16 !default;
+
+// Map
+
+$f-aspect-ratios: (
+  quote(string-ratio(1, 1)):  $f-aspect-ratio-1-1,
+  quote(string-ratio(2, 1)):  $f-aspect-ratio-2-1,
+  quote(string-ratio(3, 2)):  $f-aspect-ratio-3-2,
+  quote(string-ratio(4, 3)):  $f-aspect-ratio-4-3,
+  quote(string-ratio(16, 9)): $f-aspect-ratio-16-9,
+) !default;

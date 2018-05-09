@@ -1,0 +1,18 @@
+/* -----------------------------------------------------------------------------
+ * SHADOWS
+ */
+
+
+// Variables
+
+$f-shadow-distant: 0 2px 8px rgba($f-color-neutral-abyss, .05) !default;
+$f-shadow-close: 0 1px 2px 0 rgba($f-color-neutral-abyss, .15) !default;
+$f-shadow-subtle: 0 0 1px 1px rgba($f-color-neutral-abyss, .15) !default;
+
+// Map
+
+$f-shadows: (
+  "distant": $f-shadow-distant,
+  "close": $f-shadow-close,
+  "subtle": $f-shadow-subtle
+) !default;

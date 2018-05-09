@@ -1,0 +1,29 @@
+/* -----------------------------------------------------------------------------
+ * COLORS
+ */
+
+
+// Variables
+// -----------------------------------------------------------------------------
+
+// Toggling
+
+$u-colors-enabled: true !default;
+
+// Maps
+
+$u-colors-maps: $f-colors !default;
+
+
+// Output
+// -----------------------------------------------------------------------------
+
+@if ($u-colors-enabled) {
+  @each $_color-group-name, $_color-group-map in $u-colors-maps {
+    @each $_color-name, $_color-value in $_color-group-map {
+      .u-color-#{$_color-name} {
+        color: $_color-value !important;
+      }
+    }
+  }
+}
