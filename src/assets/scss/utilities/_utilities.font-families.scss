@@ -1,0 +1,27 @@
+/* -----------------------------------------------------------------------------
+ * FONT FAMILIES
+ */
+
+
+// Variables
+// -----------------------------------------------------------------------------
+
+// Toggling
+
+$u-font-family-enabled: false !default;
+
+// Map
+
+$u-font-families: $f-font-families !default;
+
+
+// Output
+// -----------------------------------------------------------------------------
+
+@if $u-font-family-enabled {
+  @each $_font-family-name, $_font-family-value in $u-font-families {
+    .u-font-family-#{$_font-family-name} {
+      font-family: $_font-family-value !important;
+    }
+  }
+}

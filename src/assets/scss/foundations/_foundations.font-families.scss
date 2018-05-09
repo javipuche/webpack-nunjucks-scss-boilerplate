@@ -1,0 +1,16 @@
+/* -----------------------------------------------------------------------------
+ * FONT FAMILIES
+ */
+
+
+// Main font families
+
+$f-font-family-primary: Arial !default;
+$f-font-family-secondary: Georgia !default;
+
+// Font families map
+
+$f-font-families: (
+  "primary": $f-font-family-primary,
+  "secondary": $f-font-family-secondary
+) !default;

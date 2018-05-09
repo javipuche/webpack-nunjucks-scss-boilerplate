@@ -1,0 +1,79 @@
+/* -----------------------------------------------------------------------------
+ * FLEX
+ */
+
+
+// Variables
+// -----------------------------------------------------------------------------
+
+// Toggling
+
+$u-flex-enabled: true !default;
+
+// Clases
+
+$u-flex-classes: (
+  null: (display: flex),
+  "inline": (display: inline-flex),
+  "wrap": (flex-wrap: wrap),
+  //"wrap-reverse": (flex-wrap: wrap-reverse),
+  //"nowrap": (flex-wrap: nowrap),
+  //"column": (flex-direction: column),
+  //"column-reverse": (flex-direction: column-reverse),
+  //"row": (flex-direction: row),
+  //"row-reverse": (flex-direction: row-reverse),
+  "left": (justify-content: flex-start),
+  "center": (justify-content: center),
+  "right": (justify-content: flex-end),
+  "between": (justify-content: space-between),
+  //"around": (justify-content: space-around),
+  "top": (align-items: flex-start),
+  "middle": (align-items: center),
+  "bottom": (align-items: flex-end),
+  //"baseline": (align-items: baseline),
+  "self-start": (align-self: flex-start),
+  "self-end": (align-self: flex-end),
+  //"self-stretch": (align-self: stretch),
+  "self-center": (align-self: center),
+  "grow-1": (flex-grow: 1),
+  "first": (order: -1),
+  "last": (order: 999),
+) !default;
+
+// Breakpoints
+
+$u-flex-breakpoints-enabled: true !default;
+$u-flex-breakpoints: $f-mq-breakpoints !default;
+
+
+// Mixin
+// -----------------------------------------------------------------------------
+
+@mixin u-flex($_bp-separator: null, $_bp-name: null) {
+  @each $_properties, $_values in $u-flex-classes {
+    .u-flex#{if($_properties, "-", "")}#{$_properties}#{$_bp-separator}#{$_bp-name} {
+      @each $_property, $_value in $_values {
+        #{$_property}: $_value !important;
+      }
+    }
+  }
+}
+
+
+// Output
+// -----------------------------------------------------------------------------
+
+@if $u-flex-enabled {
+  @include u-flex;
+}
+
+
+// Breakpoints output
+// -----------------------------------------------------------------------------
+@if $u-flex-enabled and $u-flex-breakpoints-enabled {
+  @each $_bp-name, $_bp-value in $u-flex-breakpoints {
+    @include breakpoint($_bp-value) {
+      @include u-flex($s-config-breakpoint-separator, $_bp-name);
+    }
+  }
+}

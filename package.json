@@ -1,0 +1,65 @@
+{
+  "name": "webpack-nunjucks-scss-boilerplate",
+  "version": "1.0.0",
+  "description": "Base para maquetar un nuevo proyecto web con Nunjucks, SCSS, JS (ES6) usando webpack.",
+  "main": "README.md",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --host 127.0.0.1 --config ./webpack.dev.config.js --progress",
+    "start:prod": "webpack-dev-server --mode production --host 127.0.0.1 --config ./webpack.prod.config.js --progress",
+    "build": "rimraf dist && webpack --mode production -p --config ./webpack.prod.config.js --progress",
+    "build:dev": "rimraf dist && webpack --mode development --config ./webpack.dev.config.js --progress"
+  },
+  "keywords": [
+    "boilerplate",
+    "webpack",
+    "sass",
+    "scss",
+    "nunjucks",
+    "js",
+    "es6"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javipuche/webpack-nunjucks-scss-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/javipuche/webpack-nunjucks-scss-boilerplate/issues"
+  },
+  "homepage": "https://github.com/javipuche/webpack-nunjucks-scss-boilerplate#readme",
+  "author": "Javier Puche",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.46",
+    "@babel/preset-env": "^7.0.0-beta.46",
+    "autoprefixer": "^8.4.1",
+    "babel-loader": "^8.0.0-beta.2",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.11",
+    "css-mqpacker": "^6.0.2",
+    "file-loader": "^1.1.11",
+    "fs": "0.0.1-security",
+    "html-beautify-webpack-plugin": "^1.0.5",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^4.2.0",
+    "imagemin-mozjpeg": "^7.0.0",
+    "imagemin-pngquant": "^5.1.0",
+    "imagemin-webpack-plugin": "^2.1.1",
+    "mini-css-extract-plugin": "^0.4.0",
+    "node-sass": "^4.9.0",
+    "nunjucks": "^3.1.2",
+    "path": "^0.12.7",
+    "postcss-loader": "^2.1.4",
+    "postcss-pxtorem": "^4.0.1",
+    "render-template-loader": "^1.0.0",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^7.0.1",
+    "script-ext-html-webpack-plugin": "^2.0.1",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "wait-for-stuff": "^1.4.0",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.1.2",
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^4.1.2"
+  }
+}

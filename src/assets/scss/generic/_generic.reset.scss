@@ -1,0 +1,44 @@
+/* -----------------------------------------------------------------------------
+ * RESET
+ */
+
+
+body,
+h1, h2, h3, h4, h5, h6,
+blockquote, p, pre,
+dl, dd, ol, ul,
+figure,
+hr,
+fieldset, legend {
+  margin:  0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+picture {
+  display: block;
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+fieldset {
+  min-width: 0;
+  border: 0;
+}

@@ -1,0 +1,27 @@
+/* -----------------------------------------------------------------------------
+ * FONT WEIGHT
+ */
+
+
+// Variables
+// -----------------------------------------------------------------------------
+
+// Toggling
+
+$u-font-weight-enabled: true !default;
+
+// Properties
+
+$u-font-weight-values: (100, 300, 400, 600, 700, 800, 900) !default;
+
+
+// Output
+// -----------------------------------------------------------------------------
+
+@if $u-font-weight-enabled {
+  @each $_font-weight in $u-font-weight-values {
+    .u-font-weight-#{$_font-weight} {
+      font-weight: $_font-weight !important;
+    }
+  }
+}

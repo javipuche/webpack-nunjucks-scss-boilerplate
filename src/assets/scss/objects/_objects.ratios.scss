@@ -1,0 +1,117 @@
+/* -----------------------------------------------------------------------------
+ * RATIOS
+ */
+
+
+// Variables
+// -----------------------------------------------------------------------------
+
+// Toggling
+
+$o-ratios-enabled: true !default;
+
+// Modifiers
+
+$o-ratios-modifiers-enabled: true !default;
+$o-ratios: $f-aspect-ratios !default;
+
+// Breakpoints
+
+$o-ratios-breakpoints-enabled: true !default;
+$o-ratios-breakpoints: $f-mq-breakpoints !default;
+
+
+// Mixins
+// -----------------------------------------------------------------------------
+
+@mixin o-ratio($_ratio: 1) {
+  position: relative;
+
+  &::before {
+    display: block;
+    width: 100%;
+    padding-top: $_ratio * 100%;
+    content: "";
+  }
+}
+
+@mixin o-ratio-override($_ratio) {
+  &::before {
+    padding-top: $_ratio * 100%;
+  }
+}
+
+@mixin o-ratio-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+// Unsets
+
+@mixin o-ratio-unset {
+  position: inherit;
+
+  &::before {
+    display: inherit;
+    width: auto;
+    padding-top: inherit;
+    content: inherit;
+  }
+}
+
+@mixin o-ratio-content-unset {
+  position: inherit;
+  top: auto;
+  left: auto;
+  height: auto;
+  width: auto;
+}
+
+
+// Output
+// -----------------------------------------------------------------------------
+
+@if ($o-ratios-enabled) {
+  .o-ratio {
+    @include o-ratio;
+
+    &__content {
+      @include o-ratio-content();
+
+      &--media {
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+
+// Modifiers
+// -----------------------------------------------------------------------------
+
+@if $o-ratios-enabled and $o-ratios-modifiers-enabled {
+  @each $_name, $_ratio in $o-ratios {
+    .o-ratio--#{$_name} {
+      @include o-ratio-override($_ratio);
+    }
+  }
+}
+
+
+// Breakpoints
+// -----------------------------------------------------------------------------
+
+@if $o-ratios-enabled and $o-ratios-modifiers-enabled and $o-ratios-breakpoints-enabled {
+  @each $_bp-name, $_bp-value in $o-ratios-breakpoints {
+    @each $_name, $_ratio in $o-ratios {
+      @include breakpoint($_bp-name) {
+        .o-ratio--#{$_name}#{$s-config-breakpoint-separator}#{$_bp-name} {
+          @include o-ratio-override($_ratio);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+/* -------------------------------------------------------------------------
+ * STRING RATIO
+ *
+ * string-ratio(16, 9) == 16\:9
+ */
+
+
+@function string-ratio($_width, $_height) {
+  @return unquote("#{$_width}#{$s-config-aspect-ratio-separator}#{$_height}");
+}

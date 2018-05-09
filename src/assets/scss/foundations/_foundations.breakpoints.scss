@@ -1,0 +1,26 @@
+/* -----------------------------------------------------------------------------
+ * BREAKPOINTS
+ */
+
+
+// Media type
+
+$f-mq-media-type: 'screen' !default;
+
+// Main breakpoint variables
+
+$f-mq-breakpoint-s: 600px !default;
+$f-mq-breakpoint-m: 900px !default;
+$f-mq-breakpoint-l: 1200px !default;
+$f-mq-breakpoint-xl: 1500px !default;
+$f-mq-breakpoint-xxl: 1800px !default;
+
+// Breakpoints map
+
+$f-mq-breakpoints: (
+  s: $f-mq-breakpoint-s,
+  m: $f-mq-breakpoint-m,
+  l: $f-mq-breakpoint-l,
+  xl: $f-mq-breakpoint-xl,
+  xxl: $f-mq-breakpoint-xxl
+) !default;
